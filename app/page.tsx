@@ -3,7 +3,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main style={styles.page}>
-      <div style={styles.body}>
+      {/* 上半部固定位置內容 */}
+      <div style={styles.hero}>
         <div style={styles.title}>SELAH</div>
 
         <div style={styles.verse}>
@@ -12,6 +13,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* 底部按鈕固定 */}
       <div style={styles.footer}>
         <Link href="/time" style={styles.button}>
           細拉
@@ -26,37 +28,30 @@ const styles: Record<string, React.CSSProperties> = {
     height: "100dvh",
     minHeight: "100svh",
     background: "var(--bg)",
-    display: "flex",
-    flexDirection: "column",
     overflow: "hidden",
-    padding: "24px 24px 0",
+    position: "relative",
+    padding: "0 24px",
   },
 
-  body: {
-    flex: 1,
+  // ✅ 核心：固定在上方位置，不受其他影響
+  hero: {
+    position: "absolute",
+    top: "18%",
+    left: "50%",
+    transform: "translateX(-50%)",
     width: "100%",
     maxWidth: 420,
-    margin: "0 auto",
     textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  
-    // ✅ 關鍵：由置中改為「偏上」
-    justifyContent: "flex-start",
-  
-    // ✅ 用 paddingTop 控制 SELAH 的高度位置
-    paddingTop: "clamp(120px, 18vh, 200px)",
   },
-  
+
   title: {
     fontSize: 56,
     color: "var(--text)",
     letterSpacing: 1,
   },
-  
+
   verse: {
-    marginTop: 16,       // ✅ 經文在 SELAH 下方
+    marginTop: 16,
     fontSize: 16,
     lineHeight: 1.8,
     color: "var(--text)",
@@ -66,14 +61,17 @@ const styles: Record<string, React.CSSProperties> = {
   ref: { opacity: 0.9 },
 
   footer: {
-    paddingBottom: "max(24px, env(safe-area-inset-bottom))",
+    position: "absolute",
+    left: 24,
+    right: 24,
+    bottom: "max(24px, env(safe-area-inset-bottom))",
   },
 
   button: {
     width: "100%",
     maxWidth: 360,
     margin: "0 auto",
-    display: "block",              // ✅ 關鍵：保證 Link 像按鈕
+    display: "block",
     textAlign: "center",
     padding: "16px 20px",
     borderRadius: 999,
