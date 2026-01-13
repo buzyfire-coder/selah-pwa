@@ -40,18 +40,23 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    gap: 14,
+  
+    // ✅ 關鍵：由置中改為「偏上」
+    justifyContent: "flex-start",
+  
+    // ✅ 用 paddingTop 控制 SELAH 的高度位置
+    paddingTop: "clamp(120px, 18vh, 200px)",
   },
-
+  
   title: {
     fontSize: 56,
     color: "var(--text)",
     letterSpacing: 1,
   },
-
+  
   verse: {
+    marginTop: 16,       // ✅ 經文在 SELAH 下方
     fontSize: 16,
     lineHeight: 1.8,
     color: "var(--text)",
