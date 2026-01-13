@@ -48,7 +48,7 @@ export default function DonePage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    minHeight: "100vh",
+    minHeight: "100svh",
     background: BG,
     display: "flex",
     flexDirection: "column",

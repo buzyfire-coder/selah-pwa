@@ -21,7 +21,7 @@ export default function Home() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    minHeight: "100vh",
+    minHeight: "100svh",
     background: "#var(--bg)",
     display: "flex",
     flexDirection: "column",
@@ -56,7 +56,7 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: "center",
     padding: "16px 20px",
     borderRadius: 999,
-    background: "var(--bg)",
+    background: "var(--wood)",
     color: "var(--text)",
     textDecoration: "none",
     fontSize: 18,
