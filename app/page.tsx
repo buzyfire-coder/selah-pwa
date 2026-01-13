@@ -27,7 +27,8 @@ const styles: Record<string, React.CSSProperties> = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "calc(24px + env(safe-area-inset-top)) 24px calc(24px + env(safe-area-inset-bottom))",
+    padding: "calc(24px 24px calc(24px + env(safe-area-inset-bottom))",
+    overflow: "hidden",
   },
   centerBlock: {
     width: "100%",

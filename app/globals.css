@@ -75,3 +75,19 @@ html, body{
 
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);   /* 關鍵：body 背景跟主題 */
+  color: var(--text);
+  overflow: hidden;        /* 關鍵：全站禁止上下滑動 */
+}
+
+body {
+  overscroll-behavior: none;   /* Android/Chrome：防彈跳 */
+  -webkit-overflow-scrolling: auto;
+}
+
+* { box-sizing: border-box; }
+
