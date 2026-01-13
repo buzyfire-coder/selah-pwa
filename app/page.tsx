@@ -63,9 +63,5 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: 18,
     letterSpacing: 2,
     boxShadow: "0 16px 30px var(--shadow)",
-    bottom: "calc(18px + env(safe-area-inset-bottom))",
-    left: 24,
-    right: 24,
-
   },
 };
