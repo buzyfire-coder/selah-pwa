@@ -72,3 +72,6 @@ html, body{
   background: var(--bg);
   color: var(--text);
 }
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }

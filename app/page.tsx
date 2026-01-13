@@ -21,13 +21,13 @@ export default function Home() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    minHeight: "100vh",
-    background: "#F6F1E7",
+    minHeight: "100svh",
+    background: "#var(--bg)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "64px 24px 48px",
+    padding: "calc(24px + env(safe-area-inset-top)) 24px calc(24px + env(safe-area-inset-bottom))",
   },
   centerBlock: {
     width: "100%",
