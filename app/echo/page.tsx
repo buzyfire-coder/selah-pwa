@@ -167,9 +167,9 @@ export default function EchoPage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    minHeight: "100vh",
+    minHeight: "100svh",
     background: "var(--bg)",
-    padding: "calc(24px + env(safe-area-inset-top)) 24px calc(24px + env(safe-area-inset-bottom))",
+    padding: "24px 24px 56px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",

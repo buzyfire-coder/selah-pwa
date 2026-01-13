@@ -269,13 +269,13 @@ export default function SelahPage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    minHeight: "100vh",
+    minHeight: "100svh",
     background: BG,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "calc(24px + env(safe-area-inset-top)) 24px calc(24px + env(safe-area-inset-bottom))",
+    padding: "24px 24px 56px"
   },
   back: {
     alignSelf: "flex-start",
