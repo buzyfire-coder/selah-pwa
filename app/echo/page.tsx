@@ -167,7 +167,7 @@ export default function EchoPage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    minHeight: "100svh",
+    minHeight: "100vh",
     background: "var(--bg)",
     padding: "24px 24px 56px",
     display: "flex",
