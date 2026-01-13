@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-const BG = "#F6F1E7";
-const TEXT = "#5A3E2B";
+const BG = "var(--bg)";
+const TEXT = "var(--text)";
 const WOOD = "#8B6B4F";
 
 
@@ -94,7 +94,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: 999,
     background: "transparent",
     color: TEXT,
-    border: "1px solid rgba(90, 62, 43, 0.14)",
+    border: "1px solid var(--border)",
     fontSize: 14,
     letterSpacing: 2,
     opacity: 0.55,

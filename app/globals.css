@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -48,4 +46,29 @@ body {
   0%   { transform: translateY(0); opacity: 0.92; }
   50%  { transform: translateY(-1px); opacity: 1; }
   100% { transform: translateY(0); opacity: 0.92; }
+}
+:root{
+  --bg: #F6F1E7;
+  --text: #5A3E2B;
+  --wood: rgba(139, 107, 79, 0.28);
+  --border: rgba(90, 62, 43, 0.16);
+  --panel: rgba(90, 62, 43, 0.06);
+  --shadow: rgba(90, 62, 43, 0.08);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0E0F12;                 /* 夜間底色：極深、唔刺眼 */
+    --text: rgba(246,241,231,.90); /* 米白字：柔和 */
+    --wood: rgba(246,241,231,0.10);
+    --border: rgba(246,241,231,0.14);
+    --panel: rgba(246,241,231,0.06);
+    --shadow: rgba(0,0,0,0.35);
+  }
+}
+
+/* 讓整站跟色 */
+html, body{
+  background: var(--bg);
+  color: var(--text);
 }

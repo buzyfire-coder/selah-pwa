@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const BG = "#F6F1E7";
-const TEXT = "#5A3E2B";
+const BG = "var(--bg)";
+const TEXT = "var(--text)";
 const WOOD = "#8B6B4F";
 const WOOD_SOFT = "#C8B29A";
 
@@ -117,11 +117,11 @@ const styles: Record<string, React.CSSProperties> = {
     maxWidth: 360,
     padding: "16px 20px",
     borderRadius: 999,
-    background: WOOD,
+    background: "var(--wood)",
     color: BG,
     border: "none",
     fontSize: 18,
     letterSpacing: 1.5,
-    boxShadow: "0 16px 30px rgba(122, 90, 58, 0.18)",
+    boxShadow: "0 16px 30px var(--shadow)",
   },
 };

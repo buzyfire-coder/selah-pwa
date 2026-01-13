@@ -12,8 +12,8 @@ type Verse = {
   theme: string;
 };
 
-const BG = "#F6F1E7";
-const TEXT = "#5A3E2B";
+const BG = "var(--bg)";
+const TEXT = "var(--text)";
 const WOOD = "#8B6B4F";
 
 export default function EchoPage() {
@@ -168,7 +168,7 @@ export default function EchoPage() {
 const styles: Record<string, React.CSSProperties> = {
   page: {
     minHeight: "100vh",
-    background: BG,
+    background: "var(--bg)",
     padding: "24px 24px 48px",
     display: "flex",
     flexDirection: "column",
@@ -176,7 +176,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   back: {
     textDecoration: "none",
-    color: TEXT,
+    color: "var(--text)",
     fontSize: 22,
     opacity: 0.55,
     width: 30,
@@ -190,7 +190,7 @@ const styles: Record<string, React.CSSProperties> = {
   title: {
     fontSize: 20,
     letterSpacing: 6,
-    color: TEXT,
+    color: "var(--text)",
     opacity: 0.45,
     marginTop: 10,
   },
@@ -198,25 +198,25 @@ const styles: Record<string, React.CSSProperties> = {
     marginTop: 18,
     fontSize: 16,
     lineHeight: 1.9,
-    color: TEXT,
+    color: "var(--text)",
     opacity: 0.8,
   },
   verseBox: {
     marginTop: 22,
     padding: 18,
     borderRadius: 16,
-    background: "rgba(90, 62, 43, 0.06)",
+    background: "var(--wood)",
   },
   verse: {
     fontSize: 18,
     lineHeight: 1.9,
-    color: TEXT,
+    color: "var(--text)",
     opacity: 0.9,
   },
   ref: {
     marginTop: 10,
     fontSize: 13,
-    color: TEXT,
+    color: "var--(text)",
     opacity: 0.7,
   },
   actions: {
@@ -231,12 +231,12 @@ const styles: Record<string, React.CSSProperties> = {
     maxWidth: 360,
     padding: "14px 18px",
     borderRadius: 999,
-    background: "rgba(139, 107, 79, 0.42)",  // 柔和木色（半透明）
-    color: TEXT,                              // 字用棕色，不用白
-    border: "1px solid rgba(90, 62, 43, 0.18)",
+    background: "var(--wood)",
+    color: "var(--text)",                              // 字用棕色，不用白
+    border: "1px solid var(--border)",
     fontSize: 16,
     letterSpacing: 2,
-    boxShadow: "0 10px 26px rgba(90, 62, 43, 0.10)", // 很淡的浮起感
+    boxShadow: "0 10px 26px var(--shadow)", // 很淡的浮起感
     backdropFilter: "blur(6px)",
     animation: "selahSoftPulse 3.8s ease-in-out infinite",
   },  
@@ -246,8 +246,8 @@ const styles: Record<string, React.CSSProperties> = {
     padding: "14px 18px",
     borderRadius: 999,
     background: "transparent",
-    color: TEXT,
-    border: "1px solid rgba(90, 62, 43, 0.14)",
+    color: "var(--text)",
+    border: "1px solid var(--border)",
     fontSize: 14,
     letterSpacing: 2,
     opacity: 0.55,
@@ -259,18 +259,18 @@ const styles: Record<string, React.CSSProperties> = {
     width: "100%",
     maxWidth: 520,
     borderRadius: 14,
-    border: "1px solid rgba(90, 62, 43, 0.18)",
+    border: "1px solid var(--border)",
     padding: 14,
     fontSize: 16,
     lineHeight: 1.7,
     outline: "none",
     background: "rgba(246, 241, 231, 0.8)",
-    color: TEXT,
+    color: "var(--text)",
   },
   tinyNote: {
     marginTop: 8,
     fontSize: 12,
-    color: TEXT,
+    color: "var(--text)",
     opacity: 0.45,
   },
 };

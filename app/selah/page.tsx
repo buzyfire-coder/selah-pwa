@@ -14,8 +14,8 @@ type Verse = {
 
 type VerseN = Omit<Verse, "id"> & { id: number };
 
-const BG = "#F6F1E7";
-const TEXT = "#5A3E2B";
+const BG = "var(--bg)";
+const TEXT = "var(--text)";
 
 // ---------- helpers ----------
 function shuffle<T>(arr: T[]) {

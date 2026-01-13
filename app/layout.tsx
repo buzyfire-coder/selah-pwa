@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Selah",
   description: "一個幫助人親近神的屬靈空間",
   // 解除你終端機顯示嘅 metadataBase 警告（本地先用 localhost）
-  metadataBase: new URL("http://selah-pwa.vercel.app/"),
+  metadataBase: new URL("http://localhost:3000"),
 };
 
 export default function RootLayout({
