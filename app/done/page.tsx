@@ -100,7 +100,6 @@ const styles: Record<string, React.CSSProperties> = {
     opacity: 0.55,
     textDecoration: "none",
     textAlign: "center",
-    border: "1px solid rgba(90, 62, 43, 0.14)",
     cursor: "pointer",
   },  
 };
