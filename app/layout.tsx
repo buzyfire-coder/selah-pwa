@@ -29,6 +29,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Selah" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
+        <meta name="theme-color" content="#F6F1E7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)" />
 
       <body className={inter.className}>{children}</body>
     </html>

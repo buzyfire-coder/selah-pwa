@@ -95,6 +95,13 @@ html, body {
   height: 100%;
   margin: 0;
   background: var(--bg);
-  overflow: hidden;
+  color: var(--text);
+  overflow: hidden;            /* 禁止上下滑 */
 }
+
+body {
+  overscroll-behavior: none;   /* Android/Chrome 防彈跳 */
+}
+
+* { box-sizing: border-box; }
 
