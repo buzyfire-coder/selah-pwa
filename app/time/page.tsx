@@ -71,7 +71,7 @@ export default function TimePage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    minHeight: "100svh",
+    minHeight: "100vh",
     background: BG,
     display: "flex",
     flexDirection: "column",
