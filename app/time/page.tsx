@@ -1,0 +1,127 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+const BG = "#F6F1E7";
+const TEXT = "#5A3E2B";
+const WOOD = "#8B6B4F";
+const WOOD_SOFT = "#C8B29A";
+
+export default function TimePage() {
+  const router = useRouter();
+  const [minutes, setMinutes] = useState<number | null>(null);
+
+  const startLabel = useMemo(() => {
+    if (!minutes) return "開始安靜";
+    return `開始安靜（${minutes}分鐘）`;
+  }, [minutes]);
+
+  const canStart = minutes !== null;
+
+  function start() {
+    if (!minutes) return;
+    router.push(`/selah?m=${minutes}`);
+  }
+
+  return (
+    <main style={styles.page}>
+      <Link href="/" style={styles.back}>
+        ←
+      </Link>
+
+      <div style={styles.centerBlock}>
+        <div style={styles.prompt}>你想安靜幾耐？</div>
+
+        <div style={styles.options}>
+          {[3, 5, 10].map((m) => {
+            const selected = minutes === m;
+            return (
+              <button
+                key={m}
+                onClick={() => setMinutes(m)}
+                style={{
+                  ...styles.optionBtn,
+                  background: selected ? WOOD : WOOD_SOFT,
+                  color: selected ? BG : TEXT,
+                }}
+              >
+                {m} 分鐘
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <button
+        onClick={start}
+        disabled={!canStart}
+        style={{
+          ...styles.startBtn,
+          opacity: canStart ? 1 : 0.55,
+          cursor: canStart ? "pointer" : "not-allowed",
+        }}
+      >
+        {startLabel}
+      </button>
+    </main>
+  );
+}
+
+const styles: Record<string, React.CSSProperties> = {
+  page: {
+    minHeight: "100vh",
+    background: BG,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "24px 24px 48px",
+  },
+  back: {
+    alignSelf: "flex-start",
+    textDecoration: "none",
+    color: TEXT,
+    fontSize: 22,
+    opacity: 0.75,
+  },
+  centerBlock: {
+    width: "100%",
+    maxWidth: 420,
+    textAlign: "center",
+    marginTop: 40,
+  },
+  prompt: {
+    fontSize: 18,
+    color: TEXT,
+    opacity: 0.9,
+    marginBottom: 22,
+  },
+  options: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 14,
+    alignItems: "center",
+  },
+  optionBtn: {
+    width: "100%",
+    maxWidth: 360,
+    padding: "14px 18px",
+    borderRadius: 999,
+    border: "none",
+    fontSize: 18,
+  },
+  startBtn: {
+    width: "100%",
+    maxWidth: 360,
+    padding: "16px 20px",
+    borderRadius: 999,
+    background: WOOD,
+    color: BG,
+    border: "none",
+    fontSize: 18,
+    letterSpacing: 1.5,
+    boxShadow: "0 16px 30px rgba(122, 90, 58, 0.18)",
+  },
+};
