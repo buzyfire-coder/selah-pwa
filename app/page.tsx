@@ -27,7 +27,7 @@ const styles: Record<string, React.CSSProperties> = {
   page: {
     height: "100dvh",
     minHeight: "100svh",
-    background: "var(--bg)",
+    background: "F6F1E7",
     overflow: "hidden",
     position: "relative",
     padding: "0 24px",
@@ -46,7 +46,7 @@ const styles: Record<string, React.CSSProperties> = {
 
   title: {
     fontSize: 56,
-    color: "var(--text)",
+    color: "5A3E2B",
     letterSpacing: 1,
   },
 
