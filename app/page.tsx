@@ -38,14 +38,14 @@ const styles: Record<string, React.CSSProperties> = {
   title: {
     marginTop: 24,
     fontSize: 56,
-    color: "#7A5A3A",
+    color: "var(--text)",
     letterSpacing: 1,
   },
   verse: {
     marginTop: 16,
     fontSize: 16,
     lineHeight: 1.8,
-    color: "#5A3E2B",
+    color: "var(--text)",
     opacity: 0.92,
   },
   ref: {
@@ -63,5 +63,9 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: 18,
     letterSpacing: 2,
     boxShadow: "0 16px 30px var(--shadow)",
+    bottom: "calc(18px + env(safe-area-inset-bottom))",
+    left: 24,
+    right: 24,
+
   },
 };
