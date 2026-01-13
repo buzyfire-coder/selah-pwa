@@ -36,7 +36,7 @@ const styles: Record<string, React.CSSProperties> = {
   // ✅ 核心：固定在上方位置，不受其他影響
   hero: {
     position: "absolute",
-    top: "18%",
+    top: "10%",
     left: "50%",
     transform: "translateX(-50%)",
     width: "100%",
