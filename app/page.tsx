@@ -71,14 +71,8 @@ const styles: Record<string, React.CSSProperties> = {
       gap: 14,
     },
     button: {
-      position: "absolute",   // ✅ 固定喺畫面底（唔靠 space-between）
-      left: 24,
-      right: 24,
-      bottom: "calc(24px + env(safe-area-inset-bottom))",
-  
       maxWidth: 360,
       margin: "0 auto",
-  
       textAlign: "center",
       padding: "16px 20px",
       borderRadius: 999,
