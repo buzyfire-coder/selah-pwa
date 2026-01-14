@@ -53,13 +53,16 @@ export default function CompanionPage() {
           });
           
           const data = await res.json().catch(() => ({}));
+          const cleaned = (data.reply ?? "")
+           .replace(/\n{3,}/g, "\n\n")
+           .trim();
           
           if (!res.ok) {
             setReply(data?.error ? `（錯誤）${data.error}` : "（錯誤）請稍後再試。");
             return;
           }
           
-          setReply(data.reply ?? "（錯誤）AI 冇回文字。");
+          setReply(cleaned || "（錯誤）AI 冇回文字。");
           
     } finally {
       setLoading(false);
@@ -143,7 +146,7 @@ const styles: Record<string, React.CSSProperties> = {
     overflowY: "auto",            // ✅ 只滾回覆
     WebkitOverflowScrolling: "touch",
     paddingRight: 2,
-    paddingBottom: 160,
+    maxHeight: "38vh",
   },
   bottomStack: {
     display: "flex",
@@ -187,6 +190,10 @@ const styles: Record<string, React.CSSProperties> = {
     color: "var(--text)",
     lineHeight: 1.9,
     textAlign: "left",
+
+    whiteSpace: "pre-wrap",
+    wordBreak: "break-word",
+    fontSize: 16,
   },
 
   bottom: { display: "flex", justifyContent: "center" },
