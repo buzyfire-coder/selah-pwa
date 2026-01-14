@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function CompanionPage() {
@@ -9,6 +9,34 @@ export default function CompanionPage() {
   const [input, setInput] = useState("");
   const [reply, setReply] = useState<string>("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const setStaticHeight = () => {
+      document.documentElement.style.setProperty(
+        "--companion-height",
+        `${window.innerHeight}px`
+      );
+    };
+  
+    setStaticHeight();
+  
+    // 只喺旋轉/橫向變化先更新，避免鍵盤 resize 推高 UI
+    let lastW = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth !== lastW) {
+        lastW = window.innerWidth;
+        setStaticHeight();
+      }
+    };
+  
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", setStaticHeight);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", setStaticHeight);
+    };
+  }, []);
+  
 
   async function ask() {
     const msg = input.trim();
@@ -80,13 +108,13 @@ return (
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    height: "var(--app-height)", // ✅ 你之前為咗 Android/iPhone 兼容用嘅做法
+    height: "var(--companion-height, var(--app-height))",
     background: "var(--bg)",
     padding: "18px 24px calc(18px + env(safe-area-inset-bottom))",
-    display: "grid",
-    gridTemplateRows: "28px 1fr auto",
     overflow: "hidden",
+    position: "relative",
   },
+  
   topbar: { display: "flex", alignItems: "center" },
   back: { textDecoration: "none", color: "var(--text)", fontSize: 22, opacity: 0.55, width: 30 },
 
@@ -115,6 +143,7 @@ const styles: Record<string, React.CSSProperties> = {
     overflowY: "auto",            // ✅ 只滾回覆
     WebkitOverflowScrolling: "touch",
     paddingRight: 2,
+    paddingBottom: 160,
   },
   bottomStack: {
     display: "flex",
@@ -174,12 +203,15 @@ const styles: Record<string, React.CSSProperties> = {
     opacity: 0.65,
   },
   actions: {
+    position: "absolute",
+    left: 24,
+    right: 24,
+    bottom: "calc(18px + env(safe-area-inset-bottom))",
     display: "flex",
     flexDirection: "column",
     gap: 12,
     alignItems: "center",
-    paddingBottom: 6,
-  },
+  },  
   primaryLink: {
     width: "100%",
     maxWidth: 360,
