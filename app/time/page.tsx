@@ -136,15 +136,21 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   startBtn: {
-    width: "100%",
+    position: "absolute",   // ✅ 固定喺畫面底（唔靠 space-between）
+    left: 24,
+    right: 24,
+    bottom: "calc(24px + env(safe-area-inset-bottom))",
+    
     maxWidth: 360,
+    margin:"0 auto",
+    textAlign: "center",
     padding: "16px 20px",
     borderRadius: 999,
     background: "var(--wood)",
     color: TEXT,
     border: "none",
     fontSize: 18,
-    letterSpacing: 1.5,
+    letterSpacing: 2,
     boxShadow: "0 16px 30px var(--shadow)",
   },
 };
