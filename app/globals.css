@@ -39,3 +39,27 @@ html, body{
 body{
   overscroll-behavior: none;
 }
+
+@keyframes selahPulse {
+  0%   { opacity: 0.22; transform: translateY(0px); }
+  50%  { opacity: 0.62; transform: translateY(-1px); }
+  100% { opacity: 0.22; transform: translateY(0px); }
+}
+
+@keyframes selahDriftA {
+  0%   { transform: translate3d(-6px, 10px, 0); opacity: 0.10; }
+  50%  { transform: translate3d(8px, -14px, 0); opacity: 0.22; }
+  100% { transform: translate3d(-6px, 10px, 0); opacity: 0.10; }
+}
+
+@keyframes selahDriftB {
+  0%   { transform: translate3d(10px, -8px, 0); opacity: 0.08; }
+  50%  { transform: translate3d(-12px, 12px, 0); opacity: 0.18; }
+  100% { transform: translate3d(10px, -8px, 0); opacity: 0.08; }
+}
+
+@keyframes selahSoftPulse {
+  0%   { transform: translateY(0); opacity: 0.92; }
+  50%  { transform: translateY(-1px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.92; }
+}

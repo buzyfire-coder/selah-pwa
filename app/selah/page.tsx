@@ -269,7 +269,7 @@ export default function SelahPage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    height: "100%",
+    height: "var(--app-height)",
     background: BG,
     display: "flex",
     flexDirection: "column",
@@ -343,39 +343,4 @@ const styles: Record<string, React.CSSProperties> = {
     opacity: 0.22,
     letterSpacing: 1,
   },  
-  
-  dustLayer: {
-    position: "absolute",
-    inset: 0,
-    overflow: "hidden",
-    pointerEvents: "none",
-  },
-  
-  dustA: {
-    position: "absolute",
-    inset: "-40%",
-    background:
-      "radial-gradient(circle at 20% 30%, rgba(90,62,43,0.10) 0 1px, transparent 2px)," +
-      "radial-gradient(circle at 70% 20%, rgba(90,62,43,0.08) 0 1px, transparent 2px)," +
-      "radial-gradient(circle at 40% 80%, rgba(90,62,43,0.09) 0 1px, transparent 2px)," +
-      "radial-gradient(circle at 85% 75%, rgba(90,62,43,0.07) 0 1px, transparent 2px)," +
-      "radial-gradient(circle at 10% 65%, rgba(90,62,43,0.06) 0 1px, transparent 2px)",
-    filter: "blur(0.2px)",
-    animation: "selahDriftA 10s ease-in-out infinite",
-    opacity: 0.18,
-  },
-  
-  dustB: {
-    position: "absolute",
-    inset: "-50%",
-    background:
-      "radial-gradient(circle at 30% 20%, rgba(90,62,43,0.08) 0 1px, transparent 2px)," +
-      "radial-gradient(circle at 60% 40%, rgba(90,62,43,0.07) 0 1px, transparent 2px)," +
-      "radial-gradient(circle at 15% 85%, rgba(90,62,43,0.06) 0 1px, transparent 2px)," +
-      "radial-gradient(circle at 90% 55%, rgba(90,62,43,0.06) 0 1px, transparent 2px)",
-    filter: "blur(0.3px)",
-    animation: "selahDriftB 14s ease-in-out infinite",
-    opacity: 0.14,
-  },
-  
 };
