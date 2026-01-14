@@ -3,19 +3,23 @@ import { Screen } from "./_components/Screen";
 
 export default function Home() {
   return (
-    <Screen
-      bottom={
-        <Link href="/time" style={styles.button}>
-          細拉
-        </Link>
-      }
-    >
+    <main style={styles.page}>
       <div style={styles.centerBlock}>
         <div style={styles.title}>SELAH</div>
         <div style={styles.verse}>你們要休息，要知道我是神。</div>
         <div style={styles.ref}>（詩篇 46:10）</div>
       </div>
-    </Screen>
+
+      <div style={styles.bottomStack}>
+        <Link href="/companion" style={styles.button}>
+          一鍵對話
+        </Link>
+
+        <Link href="/time" style={styles.button}>
+          細拉
+        </Link>
+      </div>
+    </main>
   );
 }
 
@@ -59,7 +63,13 @@ const styles: Record<string, React.CSSProperties> = {
       color: "var(--text)",
       opacity: 0.72,
     },
-  
+    bottomStack: {
+      width: "100%",
+      maxWidth: 360,
+      display: "flex",
+      flexDirection: "column",
+      gap: 14,
+    },
     button: {
       position: "absolute",   // ✅ 固定喺畫面底（唔靠 space-between）
       left: 24,
