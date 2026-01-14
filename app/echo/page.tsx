@@ -150,6 +150,7 @@ export default function EchoPage() {
               onClick={() => {
                 setPrayer("");
                 setMode("idle");
+                leaveHome();
               }}
             >
               只想靜靜
