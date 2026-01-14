@@ -1,13 +1,7 @@
-/* globals.css */
-
-/* Theme variables */
 :root{
   --bg: #F6F1E7;
   --text: #5A3E2B;
   --wood: rgba(139, 107, 79, 0.28);
-  --border: rgba(90, 62, 43, 0.16);
-  --panel: rgba(90, 62, 43, 0.06);
-  --shadow: rgba(90, 62, 43, 0.08);
 }
 
 @media (prefers-color-scheme: dark){
@@ -15,36 +9,20 @@
     --bg: #0E0F12;
     --text: rgba(246,241,231,.90);
     --wood: rgba(246,241,231,0.10);
-    --border: rgba(246,241,231,0.14);
-    --panel: rgba(246,241,231,0.06);
-    --shadow: rgba(0,0,0,0.35);
   }
 }
 
 * { box-sizing: border-box; }
 
-/* Fill whole screen + remove default margin */
 html, body {
   height: 100%;
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  overflow: hidden;          /* 禁止上下滑 */
+  overscroll-behavior: none; /* Android 防彈跳 */
 }
 
-/* Stop page scrolling (you want stillness) */
-body{
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-:root {
-  --vh: 1vh;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: var(--bg);
-  color: var(--text);
-  overflow: hidden;
+body {
+  -webkit-overflow-scrolling: auto;
 }
