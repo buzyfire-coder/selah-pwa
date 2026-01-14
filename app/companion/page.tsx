@@ -44,7 +44,7 @@ return (
       <Link href="/" style={styles.back}>←</Link>
     </div>
 
-      <div style={styles.center}>
+      <div style={styles.headerBlock}>
         <div style={styles.title}>SELAH</div>
 
         <div style={styles.box}>
@@ -59,9 +59,11 @@ return (
             {loading ? "回覆緊…" : "送出"}
           </button>
         </div>
-
-        {reply && <div style={styles.reply}>{reply}</div>}
-      </div>
+        </div>
+        
+        <div style={styles.replyScroll}>
+          {reply && <div style={styles.reply}>{reply}</div>}
+        </div>
 
     <div style={styles.actions}>
     <Link href="/time" style={styles.primaryLink}>
@@ -88,7 +90,12 @@ const styles: Record<string, React.CSSProperties> = {
   topbar: { display: "flex", alignItems: "center" },
   back: { textDecoration: "none", color: "var(--text)", fontSize: 22, opacity: 0.55, width: 30 },
 
-  center: { maxWidth: 520, width: "100%", margin: "0 auto", textAlign: "center", alignSelf: "start" },
+  headerBlock: {
+  display: "flex",
+  flexDirection: "column",
+  gap: 10,
+  textAlign: "center",
+},
   title: { fontSize: 20, letterSpacing: 6, color: "var(--text)", opacity: 0.45, marginTop: 6 },
 
   box: { marginTop: 14, display: "grid", gap: 12 },
@@ -102,6 +109,12 @@ const styles: Record<string, React.CSSProperties> = {
     outline: "none",
     background: "rgba(246, 241, 231, 0.8)",
     color: "var(--text)",
+  },
+  replyScroll: {
+    minHeight: 0,                 // ✅ 超重要：grid 入面要滾一定要有
+    overflowY: "auto",            // ✅ 只滾回覆
+    WebkitOverflowScrolling: "touch",
+    paddingRight: 2,
   },
   bottomStack: {
     display: "flex",
