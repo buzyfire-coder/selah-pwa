@@ -38,13 +38,11 @@ export default function CompanionPage() {
     }
   }
 
-  return (
-    <main style={styles.page}>
-      <div style={styles.topbar}>
-        <Link href="/" style={styles.back}>
-          ←
-        </Link>
-      </div>
+return (
+  <main style={styles.page}>
+    <div style={styles.topbar}>
+      <Link href="/" style={styles.back}>←</Link>
+    </div>
 
       <div style={styles.center}>
         <div style={styles.title}>SELAH</div>
@@ -65,24 +63,17 @@ export default function CompanionPage() {
         {reply && <div style={styles.reply}>{reply}</div>}
       </div>
 
-      <div style={styles.bottomStack}>
-  <button
-    style={styles.primaryBtn}
-    onClick={() => router.push("/time")}
-  >
-    細拉
-  </button>
+    <div style={styles.actions}>
+    <Link href="/time" style={styles.primaryLink}>
+        細拉
+      </Link>
 
-  <button
-    style={styles.secondaryBtn}
-    onClick={() => router.replace("/")}
-  >
-    只想靜靜
-  </button>
-</div>
-
-    </main>
-  );
+      <button style={styles.secondary} onClick={() =>router.replace("/")}>
+        只想靜靜
+      </button>
+    </div>
+  </main>
+);
 }
 
 const styles: Record<string, React.CSSProperties> = {
@@ -169,4 +160,24 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: 2,
     opacity: 0.65,
   },
+  actions: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 12,
+    alignItems: "center",
+    paddingBottom: 6,
+  },
+  primaryLink: {
+    width: "100%",
+    maxWidth: 360,
+    textAlign: "center",
+    padding: "16px 20px",
+    borderRadius: 999,
+    background: "var(--wood)",
+    color: "var(--text)",
+    textDecoration: "none",
+    fontSize: 18,
+    letterSpacing: 2,
+    boxShadow: "0 16px 30px var(--shadow)",
+  },  
 };
