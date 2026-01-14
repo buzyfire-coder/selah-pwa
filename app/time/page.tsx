@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 
 const BG = "var(--bg)";
 const TEXT = "var(--text)";
-const WOOD = "#8B6B4F";
-const WOOD_SOFT = "#C8B29A";
+const WOOD = "var(--wood)";
+const WOOD_SOFT = "var(--wood_soft";
 
 export default function TimePage() {
   const router = useRouter();

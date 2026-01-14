@@ -2,6 +2,7 @@
   --bg: #F6F1E7;
   --text: #5A3E2B;
   --wood: rgba(139, 107, 79, 0.28);
+  --wood_soft:rgba(145,120,95,0.20);
   --border: rgba(90, 62, 43, 0.16);
   --panel: rgba(90, 62, 43, 0.06);
   --shadow: rgba(90, 62, 43, 0.08);
@@ -15,6 +16,7 @@
     --bg: #0E0F12;
     --text: rgba(246,241,231,.90);
     --wood: rgba(246,241,231,0.10);
+    --wood_soft:rgba(235,230,220,0.07);
     --border: rgba(246,241,231,0.14);
     --panel: rgba(246,241,231,0.06);
     --shadow: rgba(0,0,0,0.35);
