@@ -20,48 +20,65 @@ export default function Home() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  page: {
-    height: "100%",
-    width: "100%",
-    background: "var(--bg)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "48px 24px 32px",
-    overflow: "hidden",
-  },
-  centerBlock: {
-    width: "100%",
-    maxWidth: 420,
-    textAlign: "center",
-  },
-  title: {
-    fontSize: 56,
-    letterSpacing: 1,
-    color: "var(--text)",
-  },
-  verse: {
-    marginTop: 16,
-    fontSize: 16,
-    lineHeight: 1.8,
-    opacity: 0.92,
-  },
-  ref: {
-    marginTop: 6,
-    fontSize: 14,
-    opacity: 0.72,
-  },
-  button: {
-    width: "100%",
-    maxWidth: 360,
-    textAlign: "center",
-    padding: "16px 20px",
-    borderRadius: 999,
-    background: "var(--wood)",
-    color: "var(--text)",
-    textDecoration: "none",
-    fontSize: 18,
-    letterSpacing: 2,
-  },
-};
+    page: {
+      height: "var(--app-height)",          // ✅ 真實可視高度（Android 會準）
+      background: "var(--bg)",
+      position: "relative",
+      overflow: "hidden",
+      paddingTop: "calc(40px + env(safe-area-inset-top))",
+      paddingLeft: 24,
+      paddingRight: 24,
+    },
+  
+    centerBlock: {
+      width: "100%",
+      maxWidth: 420,
+      textAlign: "center",
+  
+      /* ✅ 令 SELAH「偏上」但唔會 Android 飛走 */
+      margin: "0 auto",
+      marginTop: "clamp(56px, 14vh, 140px)",
+    },
+  
+    title: {
+      fontSize: 56,
+      color: "var(--text)",
+      letterSpacing: 1,
+    },
+  
+    verse: {
+      marginTop: 16,
+      fontSize: 16,
+      lineHeight: 1.8,
+      color: "var(--text)",
+      opacity: 0.92,
+    },
+  
+    ref: {
+      marginTop: 6,
+      fontSize: 14,
+      color: "var(--text)",
+      opacity: 0.72,
+    },
+  
+    button: {
+      position: "absolute",   // ✅ 固定喺畫面底（唔靠 space-between）
+      left: 24,
+      right: 24,
+      bottom: "calc(24px + env(safe-area-inset-bottom))",
+  
+      maxWidth: 360,
+      margin: "0 auto",
+  
+      textAlign: "center",
+      padding: "16px 20px",
+      borderRadius: 999,
+      background: "var(--wood)",
+      color: "var(--text)",
+      textDecoration: "none",
+      fontSize: 18,
+      letterSpacing: 2,
+      boxShadow: "0 16px 30px var(--shadow)",
+    },
+  };
+  

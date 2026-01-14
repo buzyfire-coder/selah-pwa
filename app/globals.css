@@ -5,6 +5,9 @@
   --border: rgba(90, 62, 43, 0.16);
   --panel: rgba(90, 62, 43, 0.06);
   --shadow: rgba(90, 62, 43, 0.08);
+
+  /* ✅ Android/Chrome 真實可視高度（JS 會寫入）*/
+  --app-height: 100vh;
 }
 
 @media (prefers-color-scheme: dark){
@@ -18,25 +21,19 @@
   }
 }
 
-* { box-sizing: border-box; }
+*{ box-sizing: border-box; }
 
-html, body {
+html, body{
   margin: 0;
-  width: 100%;
+  padding: 0;
   height: 100%;
   background: var(--bg);
   color: var(--text);
-  overflow: hidden;          /* 禁止上下滑 */
-  overscroll-behavior: none; /* Android 防彈跳 */
+
+  /* ✅ 全站唔可上下滑 */
+  overflow: hidden;
 }
 
-/* 關鍵：用 fixed 鎖死成一塊「真全屏」(Android 最穩) */
-body {
-  position: fixed;
-  inset: 0;
-}
-
-.appRoot{
-  width: 100%;
-  height: 100%;
+body{
+  overscroll-behavior: none;
 }
