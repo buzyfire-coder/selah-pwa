@@ -36,3 +36,15 @@ body{
   overflow: hidden;
   overscroll-behavior: none;
 }
+:root {
+  --vh: 1vh;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}

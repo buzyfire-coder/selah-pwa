@@ -1,38 +1,38 @@
+"use client";
+
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Selah",
   description: "一個幫助人親近神的屬靈空間",
-  // 解除你終端機顯示嘅 metadataBase 警告（本地先用 localhost）
-  metadataBase: new URL("http://localhost:3000"),
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  useEffect(() => {
+    const setVH = () => {
+      document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight * 0.01}px`
+      );
+    };
+
+    setVH();
+    window.addEventListener("resize", setVH);
+    return () => window.removeEventListener("resize", setVH);
+  }, []);
+
   return (
-    <html lang="zh-Hant">
-      <head>
-        {/* PWA */}
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#F6F1E7" />
-
-        {/* iOS Add to Home Screen */}
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Selah" />
-        <link rel="apple-touch-icon" href="/icon-192.png" />
-      </head>
-        <meta name="theme-color" content="#F6F1E7" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)" />
-
-      <body className={inter.className}>{children}</body>
+    <html lang="zh-HK">
+      <body>{children}</body>
     </html>
   );
 }
