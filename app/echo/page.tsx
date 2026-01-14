@@ -152,7 +152,7 @@ export default function EchoPage() {
                 setMode("idle");
               }}
             >
-              取消
+              只想靜靜
             </button>
           </>
         )}
