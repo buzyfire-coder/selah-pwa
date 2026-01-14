@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 type Verse = {
@@ -11,10 +11,6 @@ type Verse = {
   category: string;
   theme: string;
 };
-
-const BG = "var(--bg)";
-const TEXT = "var(--text)";
-const WOOD = "#8B6B4F";
 
 export default function EchoPage() {
   const [isLeaving, setIsLeaving] = useState(false);
@@ -32,7 +28,8 @@ export default function EchoPage() {
   const [mode, setMode] = useState<"idle" | "prayer">("idle");
   const [prayer, setPrayer] = useState("");
 
-  useMemo(() => {
+  // ✅ 用 useEffect 做 async load（你原本用 useMemo 其實係錯用，但功能一樣）
+  useEffect(() => {
     let cancelled = false;
 
     async function load() {
@@ -42,8 +39,12 @@ export default function EchoPage() {
 
         if (cancelled) return;
 
-        if (!verseId) setVerse(null);
-        else setVerse(all.find((x) => Number(x.id) === verseId) ?? null);
+        if (!verseId) {
+          setVerse(null);
+        } else {
+          const found = all.find((x) => Number(x.id) === verseId) ?? null;
+          setVerse(found);
+        }
       } catch {
         if (!cancelled) setVerse(null);
       } finally {
@@ -57,6 +58,11 @@ export default function EchoPage() {
     };
   }, [verseId]);
 
+  function leaveHome() {
+    setIsLeaving(true);
+    window.setTimeout(() => router.replace("/"), 650);
+  }
+
   return (
     <main
       style={{
@@ -65,11 +71,15 @@ export default function EchoPage() {
         transition: "opacity 650ms ease",
       }}
     >
+      {/* topbar */}
       <div style={styles.topbar}>
-        <Link href="/" style={styles.back}>←</Link>
+        <Link href="/" style={styles.back}>
+          ←
+        </Link>
       </div>
 
-      <div style={styles.center}>
+      {/* content (可滾動，但全頁唔會彈跳) */}
+      <div style={styles.content}>
         <div style={styles.title}>SELAH</div>
 
         <div style={styles.invite}>
@@ -86,8 +96,7 @@ export default function EchoPage() {
             </>
           ) : (
             <div style={{ opacity: 0.55, lineHeight: 1.8 }}>
-              你可以在這裡，向主說一句心裡的話。
-              <br />
+              你可以在這裡，向主說一句心裡的話。<br />
               （不會保存、也不會記錄。）
             </div>
           )}
@@ -103,14 +112,34 @@ export default function EchoPage() {
               rows={4}
             />
             <div style={styles.tinyNote}>不會保存。返回後會清空。</div>
+          </div>
+        )}
 
+        {/* content 底部留位，避免被 bottom actions 壓住 */}
+        <div style={styles.contentSpacer} />
+      </div>
+
+      {/* bottom actions：永遠貼底，不重疊 */}
+      <div style={styles.actions}>
+        {mode === "idle" ? (
+          <>
+            <button style={styles.primary} onClick={() => setMode("prayer")}>
+              一句禱告
+            </button>
+
+            <button style={styles.secondary} onClick={leaveHome}>
+              只想靜靜
+            </button>
+          </>
+        ) : (
+          <>
             <button
               style={styles.primary}
               onClick={() => {
+                // 不保存：只做交託動作，然後回首頁
                 setPrayer("");
                 setMode("idle");
-                setIsLeaving(true);
-                window.setTimeout(() => router.replace("/"), 650);
+                leaveHome();
               }}
             >
               交託給主
@@ -123,29 +152,11 @@ export default function EchoPage() {
                 setMode("idle");
               }}
             >
-              只想靜靜
+              取消
             </button>
-          </div>
+          </>
         )}
       </div>
-
-      {mode === "idle" && (
-        <div style={styles.actions}>
-          <button style={styles.primary} onClick={() => setMode("prayer")}>
-            一句禱告
-          </button>
-
-          <button
-            style={styles.secondary}
-            onClick={() => {
-              setIsLeaving(true);
-              window.setTimeout(() => router.replace("/"), 650);
-            }}
-          >
-            只想靜靜
-          </button>
-        </div>
-      )}
     </main>
   );
 }
@@ -154,10 +165,11 @@ const styles: Record<string, React.CSSProperties> = {
   page: {
     height: "var(--app-height)",
     background: "var(--bg)",
-    padding: "18px 24px calc(18px + env(safe-area-inset-bottom))",
+    padding: "16px 24px calc(16px + env(safe-area-inset-bottom))",
     overflow: "hidden",
     display: "grid",
     gridTemplateRows: "28px 1fr auto",
+    gap: 10,
   },
 
   topbar: {
@@ -173,13 +185,14 @@ const styles: Record<string, React.CSSProperties> = {
     width: 30,
   },
 
-  center: {
+  content: {
     maxWidth: 520,
     width: "100%",
     margin: "0 auto",
     textAlign: "center",
-    paddingTop: 6,
-    alignSelf: "start",
+    overflowY: "auto",
+    paddingTop: 2, // ✅ 上面留白收細
+    paddingBottom: 6,
   },
 
   title: {
@@ -187,19 +200,19 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: 6,
     color: "var(--text)",
     opacity: 0.45,
-    marginTop: 4,
+    marginTop: 2,
   },
 
   invite: {
-    marginTop: 12,
+    marginTop: 10, // ✅ 比你原本更貼近，唔會「上面空好多」
     fontSize: 16,
     lineHeight: 1.9,
     color: "var(--text)",
-    opacity: 0.8,
+    opacity: 0.82,
   },
 
   verseBox: {
-    marginTop: 14,
+    marginTop: 12,
     padding: 16,
     borderRadius: 16,
     background: "var(--wood)",
@@ -221,7 +234,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   prayerWrap: {
-    marginTop: 14,
+    marginTop: 12,
   },
 
   textarea: {
@@ -244,12 +257,15 @@ const styles: Record<string, React.CSSProperties> = {
     opacity: 0.45,
   },
 
+  contentSpacer: {
+    height: 10,
+  },
+
   actions: {
     display: "flex",
     flexDirection: "column",
     gap: 12,
     alignItems: "center",
-    paddingTop: 10,
   },
 
   primary: {
