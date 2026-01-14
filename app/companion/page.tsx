@@ -62,14 +62,22 @@ export default function CompanionPage() {
         {reply && <div style={styles.reply}>{reply}</div>}
       </div>
 
-      <div style={styles.bottom}>
-        <button
-          style={styles.secondary}
-          onClick={() => router.replace("/")}
-        >
-          只想靜靜
-        </button>
-      </div>
+      <div style={styles.bottomStack}>
+  <button
+    style={styles.primaryBtn}
+    onClick={() => router.push("/time")}
+  >
+    細拉
+  </button>
+
+  <button
+    style={styles.secondaryBtn}
+    onClick={() => router.replace("/")}
+  >
+    只想靜靜
+  </button>
+</div>
+
     </main>
   );
 }
@@ -101,10 +109,16 @@ const styles: Record<string, React.CSSProperties> = {
     background: "rgba(246, 241, 231, 0.8)",
     color: "var(--text)",
   },
-  primary: {
+  bottomStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 12,
+    alignItems: "center",
+  },
+  
+  primaryBtn: {
     width: "100%",
     maxWidth: 360,
-    margin: "0 auto",
     padding: "14px 18px",
     borderRadius: 999,
     background: "var(--wood)",
@@ -114,7 +128,20 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: 2,
     boxShadow: "0 10px 26px var(--shadow)",
   },
-
+  
+  secondaryBtn: {
+    width: "100%",
+    maxWidth: 360,
+    padding: "14px 18px",
+    borderRadius: 999,
+    background: "transparent",
+    color: "var(--text)",
+    border: "1px solid var(--border)",
+    fontSize: 14,
+    letterSpacing: 2,
+    opacity: 0.65,
+  },
+  
   reply: {
     marginTop: 16,
     padding: 16,
