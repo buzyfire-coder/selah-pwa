@@ -279,7 +279,9 @@ const styles: Record<string, React.CSSProperties> = {
     overflow: "hidden",
   },
   back: {
-    alignSelf: "flex-start",
+    position: "absolute",
+    left: 16,
+    top: "calc(16px + env(safe-area-inset-top))",
     textDecoration: "none",
     color: TEXT,
     fontSize: 22,

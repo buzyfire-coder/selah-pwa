@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 const BG = "var(--bg)";
 const TEXT = "var(--text)";
-const WOOD = "#8B6B4F";
+const WOOD = "var(--wood)";
 
 
 export default function DonePage() {
@@ -15,7 +15,7 @@ export default function DonePage() {
   return (
       <main style={{ ...styles.page, opacity: leaving ? 0 : 1, transition: "opacity 650ms ease" }}>
       <div style={styles.centerBlock}>
-        <div style={styles.title}>細拉。</div>
+        <div style={styles.title}>細拉</div>
         <div style={styles.msg}>安靜完成，願主的平安與你同在。</div>
         </div>
         <button
@@ -48,7 +48,7 @@ export default function DonePage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    height: "100%",
+    height: "var(--app-height,100dvh)",
     background: BG,
     display: "flex",
     flexDirection: "column",
