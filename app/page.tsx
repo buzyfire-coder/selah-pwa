@@ -19,47 +19,62 @@ export default function Home() {
 const styles: Record<string, React.CSSProperties> = {
   page: {
     minHeight: "100dvh",
-    background: "#F6F1E7",
+    background: "var(--bg)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+
+    /* ✅ 用 space-between 但加足夠 padding 避免 Android bar 推到好怪 */
     justifyContent: "space-between",
-    padding: "48px 24px 32px",
+
+    paddingTop: "max(56px, env(safe-area-inset-top))",
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingBottom: "calc(24px + env(safe-area-inset-bottom))",
+
     overflow: "hidden",
   },
+
+  /* ✅ SELAH 偏上：用 vh 推落去，跨機穩定 */
   centerBlock: {
     width: "100%",
     maxWidth: 420,
     textAlign: "center",
+    marginTop: "14vh",
   },
+
   title: {
     fontSize: 56,
-    color: "#5A3E2B",
+    color: "var(--text)",
     letterSpacing: 1,
   },
   verse: {
     marginTop: 16,
     fontSize: 16,
     lineHeight: 1.8,
-    color: "#5A3E2B",
+    color: "var(--text)",
     opacity: 0.92,
   },
   ref: {
     marginTop: 6,
     fontSize: 14,
-    color: "#5A3E2B",
+    color: "var(--text)",
     opacity: 0.72,
   },
+
+  /* ✅ 按鈕永遠在底部，但唔會被 Android navbar 壓住 */
   button: {
     width: "100%",
     maxWidth: 360,
     textAlign: "center",
     padding: "16px 20px",
     borderRadius: 999,
-    background: "#D9CBB8",
-    color: "#5A3E2B",
+    background: "var(--wood)",
+    color: "var(--text)",
     textDecoration: "none",
     fontSize: 18,
     letterSpacing: 2,
+    boxShadow: "0 16px 30px var(--shadow)",
+    marginBottom: 8,
   },
 };
