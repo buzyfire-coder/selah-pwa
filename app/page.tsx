@@ -35,12 +35,11 @@ const styles: Record<string, React.CSSProperties> = {
       maxWidth: 420,
       textAlign: "center",
   
-      /* ✅ 令 SELAH「偏上」但唔會 Android 飛走 */
-      margin: "0 auto",
-      marginTop: "clamp(56px, 14vh, 140px)",
-    },
+      paddingTop:"8vh"
+          },
   
     title: {
+      marginTop: 0,
       fontSize: 56,
       color: "var(--text)",
       letterSpacing: 1,
