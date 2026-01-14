@@ -167,7 +167,7 @@ export default function EchoPage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    height: "100%",
+    height: "var(--app-height)",
     background: "var(--bg)",
     padding: "24px 24px calc(24px + env(safe-area-inset-bottom))",
     overflow: "hidden",
@@ -242,6 +242,10 @@ const styles: Record<string, React.CSSProperties> = {
     animation: "selahSoftPulse 3.8s ease-in-out infinite",
   },  
   secondary: {
+    position: "absolute",   // ✅ 固定喺畫面底（唔靠 space-between）
+      left: 24,
+      right: 24,
+      bottom: "calc(24px + env(safe-area-inset-bottom))",
     width: "100%",
     maxWidth: 360,
     padding: "14px 18px",

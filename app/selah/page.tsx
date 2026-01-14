@@ -281,7 +281,7 @@ const styles: Record<string, React.CSSProperties> = {
   back: {
     position: "absolute",
     left: 16,
-    top: "calc(16px + env(safe-area-inset-top))",
+    top: "calc(12px + env(safe-area-inset-top))",
     textDecoration: "none",
     color: TEXT,
     fontSize: 22,
