@@ -71,15 +71,16 @@ export default function TimePage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    height: "100%",
+    height: "var(--app-height, 100dvh)",
     background: BG,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: "24px 24px calc(24px + env(safe-area-inset-bottom))",
+    padding:
+      "calc(18px + env(safe-area-inset-top)) 24px calc(18px + env(safe-area-inset-bottom))",
     overflow: "hidden",
   },
+
   back: {
     alignSelf: "flex-start",
     textDecoration: "none",
@@ -87,24 +88,36 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: 22,
     opacity: 0.75,
   },
+
+  // ✅ 中間內容用 flex:1，並且「偏上」
+  content: {
+    flex: 1,
+    width: "100%",
+    display: "flex",
+    justifyContent: "flex-start",
+    paddingTop: "clamp(28px, 10vh, 96px)", // 👈 令標題/選項較高，留白更大
+  },
+
   centerBlock: {
     width: "100%",
     maxWidth: 420,
     textAlign: "center",
-    marginTop: 40,
   },
+
   prompt: {
     fontSize: 18,
     color: TEXT,
     opacity: 0.9,
     marginBottom: 22,
   },
+
   options: {
     display: "flex",
     flexDirection: "column",
     gap: 14,
     alignItems: "center",
   },
+
   optionBtn: {
     width: "100%",
     maxWidth: 360,
@@ -113,6 +126,15 @@ const styles: Record<string, React.CSSProperties> = {
     border: "none",
     fontSize: 18,
   },
+
+  // ✅ 底部按鈕獨立一格，永遠貼底（含 safe-area）
+  bottom: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    paddingBottom: "env(safe-area-inset-bottom)",
+  },
+
   startBtn: {
     width: "100%",
     maxWidth: 360,
