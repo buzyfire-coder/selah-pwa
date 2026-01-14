@@ -269,7 +269,7 @@ export default function SelahPage() {
 
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    height: "var(--app-height)",
+    height: "var(--app-height,100dvh)",
     background: BG,
     display: "flex",
     flexDirection: "column",
