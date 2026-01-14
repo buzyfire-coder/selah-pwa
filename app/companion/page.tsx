@@ -79,7 +79,7 @@ return (
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="想講一句就得。"
+            placeholder="分享你當下一個感受或情緒。"
             rows={4}
             style={styles.textarea}
           />
