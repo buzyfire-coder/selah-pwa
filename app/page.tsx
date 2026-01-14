@@ -20,6 +20,17 @@ export default function Home() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
+  page: {
+    height: "100%",
+    width: "100%",
+    background: "var(--bg)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "48px 24px 32px",
+    overflow: "hidden",
+  },
   centerBlock: {
     width: "100%",
     maxWidth: 420,

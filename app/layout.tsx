@@ -3,27 +3,13 @@
 import "./globals.css";
 import { useEffect } from "react";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  useEffect(() => {
-    const setVH = () => {
-      document.documentElement.style.setProperty(
-        "--vh",
-        `${window.innerHeight * 0.01}px`
-      );
-    };
-
-    setVH();
-    window.addEventListener("resize", setVH);
-    return () => window.removeEventListener("resize", setVH);
-  }, []);
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-HK">
-      <body>{children}</body>
+      <body>
+        <div className="appRoot">{children}</div>
+      </body>
     </html>
   );
 }
+
