@@ -18,18 +18,21 @@ export default function CompanionPage() {
     setReply("");
 
     try {
-      const res = await fetch("/api/companion", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Request failed");
-
-      setReply(data.text || "");
-    } catch (e: any) {
-      setReply("我收唔到回覆住…你可以再試一次，或者我陪你靜一陣都得。");
+        const res = await fetch("/api/companion", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: input }),
+          });
+          
+          const data = await res.json().catch(() => ({}));
+          
+          if (!res.ok) {
+            setReply(data?.error ? `（錯誤）${data.error}` : "（錯誤）請稍後再試。");
+            return;
+          }
+          
+          setReply(data.reply ?? "（錯誤）AI 冇回文字。");
+          
     } finally {
       setLoading(false);
     }
